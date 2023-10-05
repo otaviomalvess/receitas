@@ -1,7 +1,7 @@
 <script lang="ts">
 	import heroImage from '$lib/img/home-hero.jpg';
 
-	type Receipt = {
+	type Recipe = {
 		id: string;
 		name: string;
 		slug: string;
@@ -9,7 +9,7 @@
 		preparationMethod: string;
 	};
 
-	export let data: Receipt;
+	export let data: Recipe;
 </script>
 
 <!-- SLOT -->

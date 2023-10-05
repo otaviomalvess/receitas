@@ -1,4 +1,4 @@
-export const receipts = [
+export const recipes = [
   {
     id: '10239058',
     name: 'Special Sushi',

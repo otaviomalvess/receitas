@@ -1,12 +1,13 @@
 import { error, type Load } from '@sveltejs/kit';
-import { receipts } from '../../../data.js';
+import { recipes } from '../../../data.js';
 
 export const load: Load = async ({ params }) => {
-	const receipt = receipts.find((receipt) => receipt.slug === params.slug);
+  // query no banco 
+  const recipe = recipes.find((recipe) => recipe.slug === params.slug);
 
-	if (!receipt) {
-		return error(420);
-	}
+  if (!recipe) {
+    return error(420);
+  }
 
-	return receipt;
+  return recipe;
 };
