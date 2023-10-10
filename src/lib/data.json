@@ -1,0 +1,26 @@
+[
+  {
+    "user": {
+      "id": 3240,
+      "email": "otavioalves@test.com",
+      "name": "Otavio Alves",
+      "recipes": [
+        {
+          "id": 2020,
+          "name": "Sushizao",
+          "ingredients": [
+            "Arroz",
+            "Sushi"
+          ],
+          "method": "Enrola o arroz no sushi",
+          "pictures": [
+            {
+              "id": 42,
+              "url": "http://test.com"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]
