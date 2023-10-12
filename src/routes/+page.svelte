@@ -1,8 +1,11 @@
-<script>
+<script lang="ts">
 	import heroImage from '$lib/img/home-hero.jpg';
+	import type { PageData } from './$types';
 
 	$: queryResults = 10;
 	$: queryOptions = 3;
+
+	export let data: PageData;
 </script>
 
 <!-- SLOT -->
@@ -38,4 +41,3 @@
 		grid-template-columns: auto auto;
 	}
 </style>
-
