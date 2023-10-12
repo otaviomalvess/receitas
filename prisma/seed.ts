@@ -7,27 +7,33 @@ async function main() {
 
 	const user = await prisma.user.create({
 		data: {
-			id: 23242,
+			id: 1029850981,
 			name: 'Otaviao',
-			email: 'otavioalves@email.com',
-			recipes: {
-				create: {
-					id: 2020,
-					name: 'Sushizao',
-					ingredients: ['Arroz', 'Sushi'],
-					method: 'Enrola o arroz no sushi',
-					pictures: {
-						create: {
-							id: 202020,
-							url: 'http://mypicture.com'
-						}
-					}
+			email: 'otavioalves@email.com'
+		}
+	});
+
+	const recipe = await prisma.recipe.create({
+		data: {
+			id: 1029284908,
+			name: 'Sushizao',
+			ingredients: ['Arroz', 'Sushi'],
+			method: 'Enrola o arroz no sushi',
+			pictures: ['http://mypicture.com'],
+			slug: 'sushizao-the-first',
+			tags: {
+				createMany: {
+					data: [
+						{ id: 1240918, name: 'frutos do mar' },
+						{ id: 59305389, name: 'saudavel' }
+					]
 				}
 			}
 		}
 	});
 
 	console.log(`Created user with id ${user.id}`);
+	console.log(`Created recipe with id ${recipe.id}`);
 
 	console.log('Seeding finished.');
 }
