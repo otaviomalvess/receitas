@@ -9,46 +9,59 @@
 		// @TODO: re-use old cards. Remove or add more if array length changed.
 		cards = [];
 		for (let i = 0; i < queryResults; i++) {
-			cards[i] = { id: "1a2s3d", name: "Sushi", slug: "special-sushi" };
+			cards[i] = { id: '1a2s3d', name: 'Sushi', slug: 'special-sushi' };
 		}
 	}
-</script>
 
+	export let data;
+</script>
 
 <div class="hero-image" style="background-image: url({heroImage})">
 	<form>
-		<input class="query-search" type="text" placeholder="Procurar..." name="query" spellcheck={false} />
+		<input
+			class="query-search"
+			type="text"
+			placeholder="Procurar..."
+			name="query"
+			spellcheck={false}
+		/>
 	</form>
 </div>
 
-<!-- <ul>
-	{#each { length: queryOptions } as _, i}
-		<li>Item {i + 1}</li>
-	{/each}
-</ul> -->
-
 <div class="grid-container">
-	{#each cards as data}
-		<Card {data}/>
+	{#each data.feed as card}
+		<Card data={card} />
 	{/each}
 </div>
 
+<!-- <div class="grid-container"> -->
+<!-- 	{#each cards as data} -->
+<!-- 		<Card {data} /> -->
+<!-- 	{/each} -->
+<!-- </div> -->
 
 <style>
 	.hero-image {
 		width: 100%;
-		min-height: 150px;
+		height: 60vw;
 		display: flex;
 		justify-content: center;
-		align-items: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		box-shadow: 0px 4px 4px 0px #00000040, inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
 	}
 
 	.query-search {
 		border-radius: 50px;
-		width: 250px;
 		height: 40px;
 		font-size: medium;
 		padding: 0 10px;
+		border: none;
+		margin-top: 2rem;
+	}
+
+	.query-search:focus {
+		outline: none;
 	}
 
 	.grid-container {

@@ -17,5 +17,7 @@
 	.logo {
 		text-align: center;
 		margin: 0px auto 5px;
+		font-family: 'Ingrid Darling';
+		font-size: 2.5rem;
 	}
 </style>

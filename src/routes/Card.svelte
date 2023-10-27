@@ -2,22 +2,23 @@
 	import cardImage from '$lib/img/card_image.png';
 
 	type Data = {
-		id: string;
-		slug: string;
+		id: number;
 		name: string;
-	}
+		ingredients: string[];
+		method: string;
+		pictures: string[];
+		slug: string;
+	};
 
 	export let data: Data;
 </script>
 
-
-<a href="\recipe\{data.slug}" class="card">
-	<img src="{cardImage}" alt="{data.name}" />
+<a href="/recipe/{data.slug}" class="card">
+	<img src={cardImage} alt={data.name} />
 	<div class="recipe-name">
 		{data.name}
 	</div>
 </a>
-
 
 <style>
 	.card {
@@ -31,5 +32,5 @@
 		padding-left: 5px;
 		padding-right: 5px;
 	}
-
 </style>
+
