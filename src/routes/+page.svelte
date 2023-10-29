@@ -1,6 +1,7 @@
 <script lang="ts">
 	import heroImage from '$lib/img/home-hero.jpg';
 	import Card from './Card.svelte';
+	import TagContainer from './TagContainer.svelte';
 
 	let cards: Array<any> = [];
 	let queryResults = 5;
@@ -33,16 +34,12 @@
 
 	<div>
 		<span>Com:</span>
-
-		<div>
-			<div>Atum</div>
-			<div>Peixe</div>
-		</div>
+		<TagContainer data={{ tags: ['Atum', 'Peixe'], color: '#c0d733' }} />
 	</div>
 
 	<span>Sem:</span>
 	<div>
-		<div>Azeitona</div>
+		<TagContainer data={{ tags: ['Azeitona'], color: '#C87575E0' }} />
 	</div>
 </div>
 
