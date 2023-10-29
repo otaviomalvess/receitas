@@ -28,17 +28,29 @@
 	</form>
 </div>
 
+<div>
+	<input type="text" placeholder="Procurar tag..." />
+
+	<div>
+		<span>Com:</span>
+
+		<div>
+			<div>Atum</div>
+			<div>Peixe</div>
+		</div>
+	</div>
+
+	<span>Sem:</span>
+	<div>
+		<div>Azeitona</div>
+	</div>
+</div>
+
 <div class="grid-container">
 	{#each data.feed as card}
 		<Card data={card} />
 	{/each}
 </div>
-
-<!-- <div class="grid-container"> -->
-<!-- 	{#each cards as data} -->
-<!-- 		<Card {data} /> -->
-<!-- 	{/each} -->
-<!-- </div> -->
 
 <style>
 	.hero-image {
@@ -65,7 +77,7 @@
 	}
 
 	.grid-container {
-		padding: 25px 25px 0px 25px;
+		padding: 15px 0px 0px 0px;
 		display: grid;
 		grid-template-columns: auto auto;
 		gap: 15px;

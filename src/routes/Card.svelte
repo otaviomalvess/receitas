@@ -15,9 +15,9 @@
 
 <a href="/recipe/{data.slug}" class="card">
 	<img src={cardImage} alt={data.name} />
-	<div class="recipe-name">
+	<span class="recipe-name">
 		{data.name}
-	</div>
+	</span>
 </a>
 
 <style>
@@ -26,11 +26,16 @@
 		margin: 0 auto;
 		min-height: 100px;
 		min-width: 150px;
+		border-radius: 10px;
+	}
+	.card img {
+		width: 100%;
+		border-radius: 10px 10px 0px 0px;
 	}
 
 	.recipe-name {
-		padding-left: 5px;
-		padding-right: 5px;
+		display: block;
+		text-align: center;
+		padding: 0.5rem 0;
 	}
 </style>
-
