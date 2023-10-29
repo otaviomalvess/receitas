@@ -1,18 +1,8 @@
 <script lang="ts">
 	import heroImage from '$lib/img/home-hero.jpg';
 	import Card from './Card.svelte';
+	import Container from './Container.svelte';
 	import TagContainer from './TagContainer.svelte';
-
-	let cards: Array<any> = [];
-	let queryResults = 5;
-
-	$: {
-		// @TODO: re-use old cards. Remove or add more if array length changed.
-		cards = [];
-		for (let i = 0; i < queryResults; i++) {
-			cards[i] = { id: '1a2s3d', name: 'Sushi', slug: 'special-sushi' };
-		}
-	}
 
 	export let data;
 </script>
@@ -29,25 +19,29 @@
 	</form>
 </div>
 
-<div>
-	<input type="text" placeholder="Procurar tag..." />
+<Container>
+	<div class="search-container">
+		<div class="search-input-container">
+			<input type="text" class="tag-search" placeholder="Procurar tag..." />
+		</div>
 
-	<div>
-		<span>Com:</span>
-		<TagContainer data={{ tags: ['Atum', 'Peixe'], color: '#c0d733' }} />
+		<div class="tag-container">
+			<span>Com:</span>
+			<TagContainer data={{ tags: ['Atum', 'Peixe'], color: '#c0d733' }} />
+		</div>
+
+		<div class="tag-container">
+			<span>Sem:</span>
+			<TagContainer data={{ tags: ['Azeitona'], color: '#C87575E0' }} />
+		</div>
 	</div>
 
-	<span>Sem:</span>
-	<div>
-		<TagContainer data={{ tags: ['Azeitona'], color: '#C87575E0' }} />
+	<div class="grid-container">
+		{#each data.feed as card}
+			<Card data={card} />
+		{/each}
 	</div>
-</div>
-
-<div class="grid-container">
-	{#each data.feed as card}
-		<Card data={card} />
-	{/each}
-</div>
+</Container>
 
 <style>
 	.hero-image {
@@ -69,14 +63,36 @@
 		margin-top: 2rem;
 	}
 
-	.query-search:focus {
-		outline: none;
-	}
-
 	.grid-container {
 		padding: 15px 0px 0px 0px;
 		display: grid;
 		grid-template-columns: auto auto;
 		gap: 15px;
+	}
+
+	.search-container {
+		background-color: #ededed;
+		border: 1px solid #bbbbbb;
+		border-radius: 5px;
+		padding: 1rem;
+	}
+
+	.tag-search {
+		font-size: 1.25rem;
+		height: 50px;
+	}
+
+	.search-input-container {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		margin-bottom: 0.5rem;
+	}
+
+	.tag-container {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		margin-bottom: 0.5rem;
 	}
 </style>
