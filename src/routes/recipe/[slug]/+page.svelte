@@ -8,9 +8,9 @@
 		slug: string;
 		images: string[];
 		ingredients: string[];
-		preparationMethod: string;
+		method: string;
 	};
-	
+
 	export let data: Recipe;
 	data.images = [heroImage, cardImage, heroImage];
 
@@ -18,18 +18,22 @@
 	$: currentImage = selectedImage;
 </script>
 
-
 <h1>{data.name}</h1>
 
 <div class="recipe-images">
 	<div class="current-image-container">
-		<img src={currentImage} alt="Recipe." class="current-image"/>
+		<img src={currentImage} alt="Recipe." class="current-image" />
 	</div>
 	<div class="images-list-container">
 		<div class="images-list">
 			{#each data.images as image}
-				<button on:click={() => { selectedImage = image; }} class="radio-button">
-					<img src={image} alt="Recipe." class="recipe-image"/>
+				<button
+					on:click={() => {
+						selectedImage = image;
+					}}
+					class="radio-button"
+				>
+					<img src={image} alt="Recipe." class="recipe-image" />
 				</button>
 			{/each}
 		</div>
@@ -44,8 +48,7 @@
 </ul>
 
 <h2>Modo de Preparo:</h2>
-<p>{data.preparationMethod}</p>
-
+<p>{data.method}</p>
 
 <style>
 	.recipe-images {
@@ -81,12 +84,13 @@
 	}
 
 	.radio-button:focus .recipe-image {
-		opacity: 1.0;
+		opacity: 1;
 	}
 
 	.recipe-image {
 		max-width: 60px;
 		margin: 0 auto;
-		opacity: .5;
+		opacity: 0.5;
 	}
 </style>
+

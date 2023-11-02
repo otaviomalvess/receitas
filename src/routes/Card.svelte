@@ -1,5 +1,7 @@
 <script lang="ts">
 	import cardImage from '$lib/img/card_image.png';
+	import { expoInOut } from 'svelte/easing';
+	import { fade } from 'svelte/transition';
 
 	type Data = {
 		id: number;
@@ -13,7 +15,7 @@
 	export let data: Data;
 </script>
 
-<a href="/recipe/{data.slug}" class="card">
+<a href="/recipe/{data.slug}" class="card" transition:fade={{ duration: 1000, easing: expoInOut }}>
 	<img src={cardImage} alt={data.name} />
 	<span class="recipe-name">
 		{data.name}

@@ -5,6 +5,15 @@
 	import TagContainer from './TagContainer.svelte';
 
 	export let data;
+
+	let searchTerm = '';
+	let filteredRecipes: typeof data.feed = [];
+
+	const searchRecipes = () => {
+		return (filteredRecipes = data.feed.filter((f) => {
+			return f.name.toLowerCase().includes(searchTerm.toLowerCase());
+		}));
+	};
 </script>
 
 <div class="hero-image" style="background-image: url({heroImage})">
@@ -15,12 +24,14 @@
 			placeholder="Procurar..."
 			name="query"
 			spellcheck={false}
+			bind:value={searchTerm}
+			on:input={searchRecipes}
 		/>
 	</form>
 </div>
 
 <Container>
-	<div class="search-container">
+	<section class="search-container">
 		<div class="search-input-container">
 			<input type="text" class="tag-search" placeholder="Procurar tag..." />
 		</div>
@@ -34,13 +45,23 @@
 			<span>Sem:</span>
 			<TagContainer data={{ tags: ['Azeitona'], color: '#C87575E0' }} />
 		</div>
-	</div>
+	</section>
 
-	<div class="grid-container">
-		{#each data.feed as card}
-			<Card data={card} />
-		{/each}
-	</div>
+	{#if searchTerm && filteredRecipes.length === 0}
+		<div>Sem receitas com esse titulo</div>
+	{:else if filteredRecipes.length > 0}
+		<div class="grid-container">
+			{#each filteredRecipes as card}
+				<Card data={card} />
+			{/each}
+		</div>
+	{:else}
+		<div class="grid-container">
+			{#each data.feed as card}
+				<Card data={card} />
+			{/each}
+		</div>
+	{/if}
 </Container>
 
 <style>
@@ -66,7 +87,7 @@
 	.grid-container {
 		padding: 15px 0px 0px 0px;
 		display: grid;
-		grid-template-columns: auto auto;
+		grid-template-columns: 1fr 1fr;
 		gap: 15px;
 	}
 

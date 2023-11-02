@@ -2,38 +2,30 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
+const data = Array.from({ length: 10 }).map((_, i) => ({
+	name: `Sushizao ${i}`,
+	ingredients: ['Arroz', 'Sushi'],
+	method: 'Enrola o arroz no sushi',
+	pictures: ['http://mypicture.com'],
+	slug: `sushizao-the-${i}`
+}));
+
 async function main() {
 	console.log('Start seeding');
+	console.log(data);
 
 	const user = await prisma.user.create({
 		data: {
-			id: 1029850981,
 			name: 'Otaviao',
 			email: 'otavioalves@email.com'
 		}
 	});
 
-	const recipe = await prisma.recipe.create({
-		data: {
-			id: 1029284908,
-			name: 'Sushizao',
-			ingredients: ['Arroz', 'Sushi'],
-			method: 'Enrola o arroz no sushi',
-			pictures: ['http://mypicture.com'],
-			slug: 'sushizao-the-first',
-			tags: {
-				createMany: {
-					data: [
-						{ id: 1240918, name: 'frutos do mar' },
-						{ id: 59305389, name: 'saudavel' }
-					]
-				}
-			}
-		}
+	await prisma.recipe.createMany({
+		data
 	});
 
 	console.log(`Created user with id ${user.id}`);
-	console.log(`Created recipe with id ${recipe.id}`);
 
 	console.log('Seeding finished.');
 }
