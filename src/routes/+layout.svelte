@@ -5,8 +5,9 @@
 <main>
 	<nav>
 		<div class="links">
-			<a href="/">home</a>
-			<a href="/recipe-read">recipe-read</a>
+			<a href="/">/home</a>
+			<a href="/recipe/special-sushi">/recipe</a>
+			<a href="/nrecipe">/nrecipe</a>
 		</div>
 		<h2 class="logo">Receitas</h2>
 	</nav>
