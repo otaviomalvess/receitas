@@ -9,15 +9,20 @@
 		// @TODO: re-use old cards. Remove or add more if array length changed.
 		cards = [];
 		for (let i = 0; i < queryResults; i++) {
-			cards[i] = { id: "1a2s3d", name: "Sushi", slug: "special-sushi" };
+			cards[i] = { id: '1a2s3d', name: 'Sushi', slug: 'special-sushi' };
 		}
 	}
 </script>
 
-
 <div class="hero-image" style="background-image: url({heroImage})">
 	<form>
-		<input class="query-search" type="text" placeholder="Procurar..." name="query" spellcheck={false} />
+		<input
+			class="query-search"
+			type="text"
+			placeholder="Procurar..."
+			name="query"
+			spellcheck={false}
+		/>
 	</form>
 </div>
 
@@ -29,10 +34,9 @@
 
 <div class="grid-container">
 	{#each cards as data}
-		<Card {data}/>
+		<Card {data} />
 	{/each}
 </div>
-
 
 <style>
 	.hero-image {
