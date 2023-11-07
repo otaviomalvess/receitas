@@ -16,7 +16,7 @@ ALTER TABLE "Tag" DROP CONSTRAINT "Tag_recipeId_fkey";
 
 -- AlterTable
 ALTER TABLE "Recipe" DROP CONSTRAINT "Recipe_pkey",
-ADD COLUMN     "entry" TEXT NOT NULL,
+ADD COLUMN     "entry" TEXT,
 ADD COLUMN     "tags" TEXT[],
 ALTER COLUMN "id" DROP DEFAULT,
 ALTER COLUMN "id" SET DATA TYPE TEXT,
