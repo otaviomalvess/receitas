@@ -8,6 +8,7 @@
 			<a href="/">/home</a>
 			<a href="/recipe/special-sushi">/recipe</a>
 			<a href="/nrecipe">/nrecipe</a>
+			<a href="/erecipe">/erecipe</a>
 		</div>
 		<h2 class="logo">Receitas</h2>
 	</nav>
