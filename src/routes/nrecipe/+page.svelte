@@ -3,8 +3,17 @@
 	import RecipeForm from '$lib/components/RecipeForm.svelte';
 
 	let isSaving: boolean = false;
+	let recipe: Recipe = {
+		ingredients: [],
+		method: '',
+		name: '',
+		pictures: ['', '', '', '', ''],
+		tags: []
+	};
 
-	const saveRecipe = async (recipe: Recipe) => {
+	export let data;
+
+	const saveRecipe = async () => {
 		isSaving = true;
 		// console.log('Save request sent!');
 
@@ -30,16 +39,9 @@
 				// console.log('Promise resolved.');
 			});
 	};
-
-	export let data;
 </script>
 
-<RecipeForm
-	lockForm={isSaving}
-	recipe={{ ingredients: [], method: '', name: '', pictures: ['', '', '', '', ''], tags: [] }}
-	tags={data.tags}
-	{saveRecipe}
-/>
+<RecipeForm lockForm={isSaving} {recipe} tags={data.tags} {saveRecipe} />
 
 <style>
 </style>

@@ -9,7 +9,7 @@
 	export let lockForm: boolean = false;
 	export let recipe: Recipe;
 	export let tags: string[] = [];
-	export let saveRecipe: (recipe: Recipe) => void;
+	export let saveRecipe: () => void;
 
 	const addTag = ({ key }: KeyboardEvent) => {
 		if (key !== 'Enter') {
@@ -197,12 +197,7 @@
 		</div>
 
 		<div class="save-recipe-container">
-			<button
-				class="save-recipe"
-				disabled={lockForm}
-				type="button"
-				on:click={() => saveRecipe(recipe)}
-			>
+			<button class="save-recipe" disabled={lockForm} type="button" on:click={() => saveRecipe()}>
 				Salvar Receita
 			</button>
 		</div>

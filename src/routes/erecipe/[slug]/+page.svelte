@@ -1,12 +1,10 @@
 <script lang="ts">
-	import type { Recipe } from '$lib/Recipe.js';
 	import RecipeForm from '$lib/components/RecipeForm.svelte';
 
 	let isSaving: boolean = false;
 
 	const deleteRecipe = async () => {
 		isSaving = true;
-
 		// console.log('Delete request sent!');
 
 		await fetch('/api/recipe-crud', {
@@ -32,13 +30,13 @@
 			});
 	};
 
-	const saveRecipe = async (recipe: Recipe) => {
+	const saveRecipe = async () => {
 		isSaving = true;
 		// console.log('Save request sent!');
 
 		await fetch('/api/recipe-crud', {
 			method: 'PUT',
-			body: JSON.stringify(recipe),
+			body: JSON.stringify(data.recipe),
 			headers: {
 				'content-type': 'application/json'
 			}
