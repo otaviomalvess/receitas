@@ -3,7 +3,6 @@
 
 	let isSaving: boolean = false;
 
-	//
 	const deleteRecipe = async () => {
 		isSaving = true;
 
@@ -34,7 +33,6 @@
 			});
 	};
 
-	//
 	const saveRecipe = async (recipe: any) => {
 		isSaving = true;
 		console.log('Save request sent!');

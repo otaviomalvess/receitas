@@ -5,7 +5,6 @@ import type { Recipe } from '$lib/Recipe';
 
 const debug_canPrismaOperate: boolean = true;
 
-//
 export async function DELETE({ request }: RequestEvent) {
 
 	try {
@@ -33,7 +32,6 @@ export async function DELETE({ request }: RequestEvent) {
 	}
 }
 
-//
 export async function POST({ request }: RequestEvent) {
 
 	try {
@@ -69,7 +67,6 @@ export async function POST({ request }: RequestEvent) {
 	}
 }
 
-//
 export async function PUT({ request }: RequestEvent) {
 
 	try {
@@ -110,7 +107,6 @@ export async function PUT({ request }: RequestEvent) {
 	}
 }
 
-//
 function clearRecipeRequestData(data: any): Recipe {
 
 	let recipe = data as Recipe;

@@ -11,7 +11,6 @@
 	export let tags: string[] = [];
 	export let saveRecipe: (recipe: Recipe) => void;
 
-	//
 	const addTag = ({ key }: KeyboardEvent) => {
 		if (key !== 'Enter') {
 			return;
@@ -25,7 +24,6 @@
 		}
 	};
 
-	//
 	const onFileSelected = ({ target }: any) => {
 		target = target as HTMLInputElement;
 		if (!target) {
@@ -66,7 +64,6 @@
 		reader.readAsDataURL(file);
 	};
 
-	//
 	const removeCurrentSelectedImage = () => {
 		recipe.pictures[selectedImage] = '';
 		currentImage = '';
@@ -74,7 +71,6 @@
 		console.log('Image removed from button: ' + selectedImage);
 	};
 
-	//
 	const removeTag = (selectedTag: number) => {
 		if (selectedTag < 0 && selectedTag > recipe.tags.length) {
 			alert('ERROR: given inde is outside of array bounderies.');

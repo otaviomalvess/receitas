@@ -2,7 +2,6 @@ import type { Recipe } from '$lib/Recipe';
 import prisma from '$lib/prisma';
 import type { Load } from '@sveltejs/kit';
 
-//
 export const load: Load = async ({ params }) => {
 
 	let recipe = await prisma.recipe.findFirst({
