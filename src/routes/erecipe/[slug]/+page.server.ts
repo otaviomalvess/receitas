@@ -1,7 +1,9 @@
+import { DATABASE_ALL_TAGS_ID } from '$env/static/private';
 import type { Recipe } from '$lib/Recipe';
 import prisma from '$lib/prisma';
 import type { Load } from '@sveltejs/kit';
 
+//
 export const load: Load = async ({ params }) => {
 
 	let recipe = await prisma.recipe.findFirst({
@@ -21,7 +23,7 @@ export const load: Load = async ({ params }) => {
 
 	const tags = (await prisma.tag.findFirst({
 		where: {
-			id: "8a36e3d8-eb1d-46d7-ae44-45beed126dd1"
+			id: DATABASE_ALL_TAGS_ID
 		},
 		select: {
 			tags: true
