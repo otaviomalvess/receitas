@@ -19,8 +19,8 @@
 		if (tags.find((value: string) => value === tagSearchValue)) {
 			recipe.tags.push(tagSearchValue);
 			recipe.tags = recipe.tags.toSorted();
-			console.log('Tag added: ' + tagSearchValue);
 			tagSearchValue = '';
+			// console.log('Tag added: ' + tagSearchValue);
 		}
 	};
 
@@ -41,7 +41,7 @@
 		// For some reason, this function gets called if the user uploaded an image once and then
 		// aborts the operation the following time.
 		if (!file) {
-			console.log('Image selection aborted.');
+			// console.log('Image selection aborted.');
 			return;
 		}
 
@@ -58,7 +58,7 @@
 			recipe.pictures[selectedImage] = target?.result as string;
 			selectedImage = selectedImage;
 
-			console.log('Image uploaded in button: ' + selectedImage);
+			// console.log('Image uploaded in button: ' + selectedImage);
 		};
 
 		reader.readAsDataURL(file);
@@ -68,7 +68,7 @@
 		recipe.pictures[selectedImage] = '';
 		currentImage = '';
 
-		console.log('Image removed from button: ' + selectedImage);
+		// console.log('Image removed from button: ' + selectedImage);
 	};
 
 	const removeTag = (selectedTag: number) => {
@@ -77,7 +77,7 @@
 			return;
 		}
 
-		console.log('Tag removed: ' + recipe.tags[selectedTag]);
+		// console.log('Tag removed: ' + recipe.tags[selectedTag]);
 
 		recipe.tags = recipe.tags.toSpliced(selectedTag, 1);
 	};

@@ -6,7 +6,7 @@
 	const deleteRecipe = async () => {
 		isSaving = true;
 
-		console.log('Delete request sent!');
+		// console.log('Delete request sent!');
 
 		await fetch('/api/recipe-crud', {
 			method: 'DELETE',
@@ -19,23 +19,21 @@
 				if (!response.ok) {
 					return Promise.reject(response.statusText);
 				}
-
-				console.log(response.statusText);
 				alert('Recipe was deleted succesfully!');
+				// console.log(response.statusText);
 			})
 			.catch((error) => {
-				console.log(error);
-				alert('ERROR: something went wrong.');
+				alert(`ERROR: ${error}`);
 			})
 			.finally(() => {
 				isSaving = false;
-				console.log('Promise resolved.');
+				// console.log('Promise resolved.');
 			});
 	};
 
 	const saveRecipe = async (recipe: any) => {
 		isSaving = true;
-		console.log('Save request sent!');
+		// console.log('Save request sent!');
 
 		await fetch('/api/recipe-crud', {
 			method: 'PUT',
@@ -48,17 +46,15 @@
 				if (!response.ok) {
 					return Promise.reject(response.statusText);
 				}
-
-				console.log(response.statusText);
 				alert('Recipe was saved succesfully!');
+				// console.log(response.statusText);
 			})
 			.catch((error) => {
-				console.log(error);
-				alert('ERROR: something went wrong.');
+				alert(`ERROR: ${error}.`);
 			})
 			.finally(() => {
 				isSaving = false;
-				console.log('Promise resolved.');
+				// console.log('Promise resolved.');
 			});
 	};
 
