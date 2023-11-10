@@ -24,21 +24,8 @@
 		}
 	};
 
-	const onFileSelected = ({ target }: any) => {
-		target = target as HTMLInputElement;
-		if (!target) {
-			alert('Target is not of type HTMLInputElement.');
-			return;
-		}
-
-		if (target.files.length > 1) {
-			alert("ERROR: doesn't have support for choosing multiple files yet.");
-			return;
-		}
-
-		const file = target.files[0] as Blob;
-
-		// For some reason, this function gets called if the user uploaded an image once and then
+	const onFileSelected = (file: File | null | undefined) => {
+		// For some reason, `onFileSelected` gets called if the user uploaded an image once and then
 		// aborts the operation the following time.
 		if (!file) {
 			// console.log('Image selection aborted.');
@@ -52,12 +39,11 @@
 
 		const reader = new FileReader();
 		reader.onerror = () => {
-			alert('Invalid image.');
+			alert('ERROR: invalid image.');
 		};
 		reader.onload = ({ target }) => {
 			recipe.pictures[selectedImage] = target?.result as string;
 			selectedImage = selectedImage;
-
 			// console.log('Image uploaded in button: ' + selectedImage);
 		};
 
@@ -67,8 +53,7 @@
 	const removeCurrentSelectedImage = () => {
 		recipe.pictures[selectedImage] = '';
 		currentImage = '';
-
-		// console.log('Image removed from button: ' + selectedImage);
+		// console.log(`Image removed from button: ${selectedImage}`);
 	};
 
 	const removeTag = (selectedTag: number) => {
@@ -101,7 +86,7 @@
 			disabled={lockForm}
 			style="display: none;"
 			type="file"
-			on:change={(e) => onFileSelected(e)}
+			on:change={({ currentTarget }) => onFileSelected(currentTarget.files?.item(0))}
 		/>
 
 		<div class="recipe-images-container">

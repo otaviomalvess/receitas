@@ -1,9 +1,10 @@
 <script lang="ts">
+	import type { Recipe } from '$lib/Recipe.js';
 	import RecipeForm from '$lib/components/RecipeForm.svelte';
 
 	let isSaving: boolean = false;
 
-	const saveRecipe = async (recipe: any) => {
+	const saveRecipe = async (recipe: Recipe) => {
 		isSaving = true;
 		// console.log('Save request sent!');
 
