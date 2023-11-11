@@ -3,8 +3,18 @@ import { randomUUID } from 'crypto';
 
 const prisma = new PrismaClient();
 
+const data = Array.from({ length: 10 }).map((_, i) => ({
+	id: randomUUID(),
+	name: `Sushizao ${i}`,
+	ingredients: ['Arroz', 'Sushi'],
+	method: 'Enrola o arroz no sushi',
+	pictures: ['http://mypicture.com'],
+	slug: `sushizao-the-${i}`
+}));
+
 async function main() {
 	console.log('Start seeding');
+	console.log(data);
 
 	const user = await prisma.user.create({
 		data: {
@@ -14,15 +24,8 @@ async function main() {
 		}
 	});
 
-	const recipe = await prisma.recipe.create({
-		data: {
-			id: randomUUID(),
-			name: 'Sushizao',
-			ingredients: ['Arroz', 'Sushi'],
-			method: 'Enrola o arroz no sushi',
-			pictures: ['http://mypicture.com'],
-			slug: 'sushizao-the-first'
-		}
+	await prisma.recipe.createMany({
+		data
 	});
 
 	await prisma.tag.create({
@@ -33,7 +36,6 @@ async function main() {
 	});
 
 	console.log(`Created user with id ${user.id}`);
-	console.log(`Created recipe with id ${recipe.id}`);
 	console.log('Created tags');
 
 	console.log('Seeding finished.');
