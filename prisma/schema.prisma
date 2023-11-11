@@ -11,24 +11,22 @@ generator client {
 }
 
 model User {
-  id    Int    @id @default(autoincrement())
+  id    String @id @default(uuid())
   email String @unique
   name  String
 }
 
 model Recipe {
-  id          Int      @id @default(autoincrement())
+  id          String   @id @default(uuid())
   name        String
   ingredients String[]
   method      String
   pictures    String[]
-  slug        String
-  tags        Tag[]
+  slug        String   @unique
+  tags        String[]
 }
 
 model Tag {
-  id       Int     @id @default(autoincrement())
-  name     String
-  Recipe   Recipe? @relation(fields: [recipeId], references: [id])
-  recipeId Int?
+  id   String   @id @default(uuid())
+  tags String[]
 }
